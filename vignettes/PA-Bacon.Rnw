@@ -21,7 +21,12 @@
 \begin{document}
 \SweaveOpts{concordance=TRUE}
 
-\author {Matthieu Lestel}
+\author {
+\begin{tabular}{cc}
+		{Original Author} & {Matthieu Lestel}\\
+		\small {Edited by} & \small {Joe Wayne Byers}
+\end{tabular} 
+}
 
 \title{Performance Attribution from Bacon}
 
@@ -50,7 +55,7 @@ To calculate Mean absolute deviation we take the sum of the absolute value of th
  \deqn{MeanAbsoluteDeviation = \frac{\sum^{n}_{i=1}r_i - \overline{r}}{n}}\\
  %{MeanAbsoluteDeviation = sum(|r-mean(r)|)/n }
 
-where \eqn{n} is the number of observations of the entire series, \eqn{r_i} is the return in month i and \eqn{\overline{r}} is the mean return
+where \eqn{n}. is the number of observations of the entire series, \eqn{r_i}. is the return in month i and \eqn{\overline{r}}. is the mean return
 
 <<>>=
 data(portfolio_bacon)
@@ -79,11 +84,11 @@ SharpeRatio(managers[,1,drop=FALSE], Rf=.035/12, FUN="StdDev")
 
 \subsection{Risk-adjusted return: MSquared (p.67)}
 
-\eqn{M^2} is a risk adjusted return useful to judge the size of relative performance between differents portfolios. With it you can compare portfolios with different levels of risk.
+\eqn{M^2}. is a risk adjusted return useful to judge the size of relative performance between differents portfolios. With it you can compare portfolios with different levels of risk.
 
 \deqn{M^2 = r_P + SR * (\sigma_M - \sigma_P) = (r_P - r_F) * \frac{\sigma_M}{\sigma_P} + r_F}{M squared = Rp + SR * (Market risk - Portfolio risk) = (Rp - Rf) * Market risk / Portfolio risk + Rf}
 
-where \eqn{r_P}. is the portfolio return annualized, \eqn{\sigma_M}. is the market risk and \eqn{\sigma_P} is the portfolio risk
+where \eqn{r_P}. is the portfolio return annualized, \eqn{\sigma_M}. is the market risk and \eqn{\sigma_P}. is the portfolio risk
 
 <<>>=
 data(portfolio_bacon)
@@ -92,7 +97,7 @@ print(MSquared(portfolio_bacon[,1], portfolio_bacon[,2])) #expected 0.1068
 
 \subsection{MSquared Excess (p.68)}
 
-\eqn{M^2} excess is the quantity above the standard M. There is a geometric excess return which is better for Bacon and an arithmetic excess return
+\eqn{M^2}. excess is the quantity above the standard M. There is a geometric excess return which is better for Bacon and an arithmetic excess return
 
 \deqn{M^2 excess (geometric) = \frac{1 + M^2}{1 + b} - 1}{MSquared excess (geometric) = (1+M^2)/(1+b) - 1}
 \deqn{M^2 excess (arithmetic) = M^2 - b}{MSquared excess (arithmetic) = M^2 - b}
@@ -135,7 +140,7 @@ The regression epsilon is an error term measuring the vertical distance between 
 
 \deqn{\epsilon_r = r_p - \alpha_r - \beta_r * b}{epsilon_r = r_p - alpha_r - beta_r * b}
 
-where \eqn{\alpha_r} is the regression alpha, \eqn{\beta_r} is the regression beta, \eqn{r_p} is the portfolio return and b is the benchmark return
+where \eqn{\alpha_r}. is the regression alpha, \eqn{\beta_r}. is the regression beta, \eqn{r_p}. is the portfolio return and b is the benchmark return
 
 <<>>=
 data(managers)
@@ -161,7 +166,7 @@ Systematic risk as defined by Bacon(2008) is the product of beta by market risk.
 
 \deqn{\sigma_s = \beta * \sigma_m}{systematic risk = beta * market risk}
 
-where \eqn{\sigma_s}. is the systematic risk, \eqn{\beta}. is the regression beta, and \eqn{\sigma_m} is the market risk
+where \eqn{\sigma_s}. is the systematic risk, \eqn{\beta}. is the regression beta, and \eqn{\sigma_m}. is the market risk
 
 <<>>=
 data(portfolio_bacon)
@@ -310,7 +315,7 @@ measures the deformation from a normal deformation
 
 \deqn{Skewness = \frac{1}{n}*\sum^{n}_{i=1}(\frac{r_i - \overline{r}}{\sigma_P})^3}{Skewness(moment) = sum((x-mean(x))^3/var(x)^(3/2))/length(x)}
 
-where \eqn{n}. is the number of return, \eqn{\overline{r}}. is the mean of the return distribution, \eqn{\sigma_P}. is its standard deviation and \eqn{\sigma_{S_P}} is its sample standard deviation
+where \eqn{n}. is the number of return, \eqn{\overline{r}}. is the mean of the return distribution, \eqn{\sigma_P}. is its standard deviation and \eqn{\sigma_{S_P}}. is its sample standard deviation
 
 <<>>=
 data(managers)
@@ -328,7 +333,7 @@ data(portfolio_bacon)
 print(skewness(portfolio_bacon[,1], method="sample")) #expected -0.09
 @
 
-\subsection{Kurtosis (p.84)} 
+\subsection{Kurtosis (p.84)}
 
 Kurtosis measures the weight or returns in the tails of the distribution relative to standard deviation.
 
@@ -413,7 +418,7 @@ To calculate Burke ratio we take the difference between the portfolio return and
 
 \deqn{Burke Ratio = \frac{r_P - r_F}{\sqrt{\sum^{d}_{t=1}{D_t}^2}}}{Burke Ratio = (Rp - Rf) / (sqrt(sum(t=1..n)(Dt^2)))}
 
-where \eqn{d}. is number of drawdowns, \eqn{r_P} is the portfolio return, \eqn{r_F}. is the risk free rate and \eqn{D_t}. the \eqn{t^{th}} drawdown.
+where \eqn{d}. is number of drawdowns, \eqn{r_P}. is the portfolio return, \eqn{r_F}. is the risk free rate and \eqn{D_t}. the \eqn{t^{th}}. drawdown.
 
 <<>>=
 data(portfolio_bacon)
@@ -426,7 +431,7 @@ To calculate the modified Burke ratio we just multiply the Burke ratio by the sq
 
 \deqn{Modified Burke Ratio = \frac{r_P - r_F}{\sqrt{\sum^{d}_{t=1}\frac{{D_t}^2}{n}}}}{Modified Burke Ratio = (Rp - Rf) / (sqrt(sum(t=1..n)(Dt^2 / n)))}
 
-where \eqn{n}. is the number of observations of the entire series, \eqn{d} is number of drawdowns, \eqn{r_P}. is the portfolio return, \eqn{r_F}. is the risk free rate and \eqn{D_t}. the \eqn{t^{th}}. drawdown.
+where \eqn{n}. is the number of observations of the entire series, \eqn{d}. is number of drawdowns, \eqn{r_P}. is the portfolio return, \eqn{r_F}. is the risk free rate and \eqn{D_t}. the \eqn{t^{th}}. drawdown.
 
 <<>>=
 data(portfolio_bacon)
@@ -634,7 +639,7 @@ Adjusted Sharpe ratio was introduced by Pezier and White (2006) to adjusts for s
 
 \deqn{Adjusted Sharpe Ratio = SR * [1 + (\frac{S}{6}) * SR - (\frac{K - 3}{24}) * SR^2]}{Adjusted Sharpe ratio = SR x [1 + (S/6) x SR - ((K-3) / 24) x SR^2]}
 
-where \eqn{SR}. is the sharpe ratio with data annualized, \eqn{S}. is the skewness and \eqn{K} is the kurtosis
+where \eqn{SR}. is the sharpe ratio with data annualized, \eqn{S}. is the skewness and \eqn{K}. is the kurtosis
 
 <<>>=
 data(portfolio_bacon)
@@ -662,7 +667,7 @@ Prospect ratio is a ratio used to penalise loss since most people feel loss grea
 
 \deqn{ProspectRatio(R) = \frac{\frac{1}{n}*\sum^{n}_{i=1}(Max(r_i,0)+2.25*Min(r_i,0) - MAR)}{\sigma_D}}{ProspectRatio(R) = (1/n * sum(Max(ri,0) + 2.25 * Min(ri,0)) - MAR) / DownsideRisk}
 
-where \eqn{n}. is the number of observations of the entire series, MAR is the minimum acceptable return and \eqn{\sigma_D} is the downside risk
+where \eqn{n}. is the number of observations of the entire series, MAR is the minimum acceptable return and \eqn{\sigma_D}. is the downside risk
 
 <<>>=
 data(portfolio_bacon)
@@ -674,7 +679,7 @@ print(ProspectRatio(portfolio_bacon[,1], MAR)) #expected -0.134
 
 \subsection{M Squared for Sortino (p.102)}
 
-M squared for Sortino is a \eqn{M^2} calculated for Downside risk instead of Total Risk
+M squared for Sortino is a \eqn{M^2}. calculated for Downside risk instead of Total Risk
 
 \deqn{M^2_S = r_P + Sortino ratio * (\sigma_{DM} - \sigma_D)}{M^2 (Sortino) = Rp + Sortino ratio * (DownsideRiskBenchmark - DownsideRiskPortfolio)}
 
