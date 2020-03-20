@@ -162,7 +162,7 @@ print(CAPM.jensenAlpha(portfolio_bacon[,1], portfolio_bacon[,2])) #expected -0.0
 
 \subsection{Systematic Risk (p.75)}
 
-Systematic risk as defined by Bacon(2008) is the product of beta by market risk. Be careful ! It's not the same definition as the one given by Michael Jensen. Market risk is the standard deviation of the benchmark. The systematic risk is annualized
+Systematic risk as defined by Bacon(2008) is the product of beta by market risk. Be careful! It's not the same definition as the one given by Michael Jensen. Market risk is the standard deviation of the benchmark. The systematic risk is annualized
 
 \deqn{\sigma_s = \beta * \sigma_m}{systematic risk = beta * market risk}
 
@@ -431,7 +431,7 @@ To calculate the modified Burke ratio we just multiply the Burke ratio by the sq
 
 \deqn{Modified Burke Ratio = \frac{r_P - r_F}{\sqrt{\sum^{d}_{t=1}\frac{{D_t}^2}{n}}}}{Modified Burke Ratio = (Rp - Rf) / (sqrt(sum(t=1..n)(Dt^2 / n)))}
 
-where \eqn{n}. is the number of observations of the entire series, \eqn{d}. is number of drawdowns, \eqn{r_P}. is the portfolio return, \eqn{r_F}. is the risk free rate and \eqn{D_t}. the \eqn{t^{th}}. drawdown.
+where \eqn{n}. is the number of observations of the entire series, \eqn{d}. is number of drawdowns, \eqn{r_P}. is the portfolio return, \eqn{r_F}. is the risk free rate and \eqn{D_t}. the \eqn{t^{th}}. drawdown.  The denominator in the modified Burke ratio is the Drawdown Deviation.
 
 <<>>=
 data(portfolio_bacon)
@@ -440,11 +440,11 @@ print(BurkeRatio(portfolio_bacon[,1], modified = TRUE)) #expected 3.65
 
 \subsection{Martin ratio (p.91)}
 
-To calculate Martin ratio we divide the difference of the portfolio return and the risk free rate by the Ulcer index
+To calculate Martin ratio we divide the difference of the portfolio return and the risk free rate by the Ulcer index.
 
 \deqn{Martin ratio = \frac{r_P - r_F}{\sqrt{\sum^{n}_{i=1} \frac{{D'_i}^2}{n}}}}{Martin ratio = (rp - rf) / Ulcer index}
 
-where \eqn{r_P}. is the annualized portfolio return, \eqn{r_F}. is the risk free rate, \eqn{n}. is the number of observations of the entire series, \eqn{D'_i}. is the drawdown since previous peak in period i
+where \eqn{r_P}. is the annualized portfolio return, \eqn{r_F}. is the risk free rate, \eqn{n}. is the number of observations of the entire series, \eqn{D'_i}. is the drawdown since previous peak in period \eqn{i}.  The denominator in the Martin ration is the Ulcer Index.
 
 <<>>=
 data(portfolio_bacon)
@@ -457,7 +457,7 @@ To calculate Pain ratio we divide the difference of the portfolio return and the
 
 \deqn{Pain ratio = \frac{r_P - r_F}{\sum^{n}_{i=1} \frac{\mid D'_i \mid}{n}}}{Pain ratio = (rp - rf) / Pain index}
 
-where \eqn{r_P}. is the annualized portfolio return, \eqn{r_F}. is the risk free rate, \eqn{n}. is the number of observations of the entire series, \eqn{D'_i}. is the drawdown since previous peak in period i
+where \eqn{r_P}. is the annualized portfolio return, \eqn{r_F}. is the risk free rate, \eqn{n}. is the number of observations of the entire series, \eqn{D'_i}. is the drawdown since previous peak in period \eqn{i}.  The denominator in the Pain ratio is the Pain Index.
 
 <<>>=
 data(portfolio_bacon)
